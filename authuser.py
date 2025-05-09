@@ -15,9 +15,11 @@ DB_SETTINGS = {
     'port': int(os.getenv('DB_PORT'))
 }
 
+
 #Login
 def login(secure):
-    while secure == False:
+    attempts = 0
+    while secure == False and attempts < 3:
         try:
             conn = psycopg2.connect(**DB_SETTINGS)
             cur = conn.cursor()
@@ -75,6 +77,13 @@ def login(secure):
                 else:
                     print('Sorry, your Secure Access Code does not match our records')
                     print('Please contact the system administrator')
+                    attempts += 1
+                    if attempts == 3:
+                        time.sleep(2)
+                        print('')
+                        print('Incorrect Secure Access Code entered too many times. Exiting...')
+                        time.sleep(3)
+                        return None
                     time.sleep(3)
                     os.system('clear')
         except Exception as e:

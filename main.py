@@ -35,3 +35,5 @@ if __name__ == '__main__':
         if securedName:
             secure = True
             menu(secure)
+        else:
+            break
