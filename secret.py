@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+#Database Settings
 DB_SETTINGS = {
     'dbname': os.getenv('DB_NAME'),
     'user': os.getenv('DB_USER'),
@@ -14,7 +15,7 @@ DB_SETTINGS = {
     'port': int(os.getenv('DB_PORT'))
 }
 
-
+#Add new user
 def addCode(name, newCode):
     try:
         conn = psycopg2.connect(**DB_SETTINGS)
@@ -48,6 +49,7 @@ print('')
 time.sleep(1)
 secure = False
 
+#Login
 def login(secure):
     while secure == False:
         print('Enter your Secure Access Code')
