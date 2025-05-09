@@ -1,2 +1,4 @@
 .env
 SQL Server.session.sql
+.vscode
+__pycache__
