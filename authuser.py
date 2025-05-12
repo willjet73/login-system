@@ -24,6 +24,7 @@ def login(secure):
             conn = psycopg2.connect(**DB_SETTINGS)
             cur = conn.cursor()
             time.sleep(1)
+            os.system('clear')
             print('\n | Connected to Server | \n')
             time.sleep(1)
             secure = False
